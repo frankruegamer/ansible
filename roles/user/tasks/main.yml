@@ -11,3 +11,10 @@
     user: "{{username}}"
     key: "{{ lookup('file', '/home/' + username + '/.ssh/id_ecdsa.pub') }}"
 
+- name: Disable requirement of sudo password
+  lineinfile:
+    dest: /etc/sudoers
+    regexp: "^%sudo"
+    line: "%sudo ALL=(ALL) NOPASSWD: ALL"
+    validate: "visudo -cf %s"
+
