@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  roles:
+    - provision
+
+- hosts: factorio
+  gather_facts: no
+  remote_user: root
+  pre_tasks:
+    - wait_for_connection:
+  roles:
+    - role: user
+      vars:
+        username: "{{ lookup('env', 'USER') }}"

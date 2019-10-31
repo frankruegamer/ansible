@@ -1,0 +1,12 @@
+---
+- name: Create user
+  user:
+    name: "{{username}}"
+    groups:
+      - sudo
+
+- name: Set authorized key from file
+  authorized_key:
+    user: "{{username}}"
+    key: "{{ lookup('file', '/home/' + username + '/.ssh/id_ecdsa.pub') }}"
+
