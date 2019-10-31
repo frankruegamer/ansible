@@ -4,6 +4,7 @@
     name: "{{username}}"
     groups:
       - sudo
+    shell: /bin/bash
 
 - name: Set authorized key from file
   authorized_key:
