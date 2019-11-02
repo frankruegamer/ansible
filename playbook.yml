@@ -5,10 +5,25 @@
 
 - hosts: factorio
   gather_facts: no
-  remote_user: root
-  pre_tasks:
-    - wait_for_connection:
+  tasks:
+    - name: Check SSH connection
+      wait_for_connection:
+        timeout: 3
+      ignore_errors: True
+      register: check_ansible_connection
+    - name: Create User if not exists
+      block:
+        - wait_for_connection:
+            timeout: 30
+        - include_role:
+            name: user
+          vars:
+            username: "{{ lookup('env', 'USER') }}"
+      when: check_ansible_connection is failed
+      remote_user: root
+
+- hosts: factorio
+  become: True
   roles:
-    - role: user
-      vars:
-        username: "{{ lookup('env', 'USER') }}"
+    - dev-sec.ssh-hardening
+
