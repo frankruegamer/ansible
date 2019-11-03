@@ -25,5 +25,5 @@
 - hosts: factorio
   become: True
   roles:
-    - dev-sec.ssh-hardening
+    - security
 
