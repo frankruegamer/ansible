@@ -1,0 +1,4 @@
+---
+dependencies:
+  - dev-sec.ssh-hardening
+  - dev-sec.os-hardening

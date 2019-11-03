@@ -1,4 +1,2 @@
 ---
-- include_role:
-    name: dev-sec.ssh-hardening
 
