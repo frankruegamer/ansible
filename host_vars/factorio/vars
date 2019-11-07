@@ -1,3 +1,8 @@
 ---
 factorio_username: "{{ vault_factorio_username }}"
 factorio_token: "{{ vault_factorio_token }}"
+factorio_mods:
+  - even-distribution
+  - Fill4Me
+  - Squeak Through
+  - VehicleSnap

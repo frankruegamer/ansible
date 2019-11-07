@@ -1,8 +1,19 @@
 ---
-- name: Create Factorio directory
+- name: Create Factorio directories
   file:
-    path: /opt/factorio
+    path: "{{ item }}"
     state: directory
+    owner: '845'
+    group: '845'
+  loop:
+    - /opt/factorio
+    - /opt/factorio/mods
+  become: True
+
+- name: Setup mods
+  template:
+    src: mod-list.json.j2
+    dest: /opt/factorio/mods/mod-list.json
     owner: '845'
     group: '845'
   become: True
