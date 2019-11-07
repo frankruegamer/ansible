@@ -30,7 +30,5 @@
   become: True
   roles:
     - security
-    - role: docker
-      vars:
-        username: "{{ lookup('env', 'USER') }}"
+    - docker
 

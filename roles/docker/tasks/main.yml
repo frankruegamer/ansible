@@ -4,4 +4,15 @@
     name: geerlingguy.docker
   vars:
     docker_users:
-      - "{{ username }}"
+      - "{{ created_user.name }}"
+
+- name: Install pip
+  apt:
+    name: python3-pip
+
+- name: Install docker python module
+  pip:
+    name:
+      - docker
+      - docker-compose
+    state: present
