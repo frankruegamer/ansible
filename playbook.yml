@@ -27,9 +27,9 @@
       become: True
 
 - hosts: factorio
-  become: True
   roles:
     - security
-    - docker
+    - role: docker
+      become: True
     - factorio
 
