@@ -17,10 +17,14 @@
             timeout: 30
         - include_role:
             name: user
-          vars:
-            username: "{{ lookup('env', 'USER') }}"
       when: check_ansible_connection is failed
       remote_user: root
+    - name: Update User
+      block:
+        - include_role:
+            name: user
+      when: check_ansible_connection is not failed
+      become: True
 
 - hosts: factorio
   become: True
