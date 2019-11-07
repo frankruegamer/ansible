@@ -1,0 +1,3 @@
+---
+factorio_username: "{{ vault_factorio_username }}"
+factorio_token: "{{ vault_factorio_token }}"

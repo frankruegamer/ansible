@@ -13,8 +13,8 @@
     state: directory
 
 - name: Setup docker-compose.yml
-  copy:
-    src: docker-compose.yml
+  template:
+    src: docker-compose.yml.j2
     dest: "{{ created_user.home }}/factorio/docker-compose.yml"
 
 - name: Start container

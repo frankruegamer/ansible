@@ -7,9 +7,9 @@ services:
      - "34197:34197/udp"
     volumes:
      - /opt/factorio:/factorio
-#    environment:
+    environment:
+     - USERNAME={{ factorio_username }}
+     - TOKEN={{ factorio_token }}
+     - UPDATE_MODS_ON_START=true
 #      - PUID=1000
 #      - PGID=1000
-#      - UPDATE_MODS_ON_START=true
-#      - USERNAME=FactorioUsername
-#      - TOKEN=FactorioToken
