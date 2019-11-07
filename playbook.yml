@@ -31,4 +31,5 @@
   roles:
     - security
     - docker
+    - factorio
 

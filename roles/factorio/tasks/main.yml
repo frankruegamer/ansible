@@ -1,0 +1,24 @@
+---
+- name: Create Factorio directory
+  file:
+    path: /opt/factorio
+    state: directory
+    owner: '845'
+    group: '845'
+  become: True
+
+- name: Create docker-compose directory
+  file:
+    path: "{{ created_user.home }}/factorio"
+    state: directory
+
+- name: Setup docker-compose.yml
+  copy:
+    src: docker-compose.yml
+    dest: "{{ created_user.home }}/factorio/docker-compose.yml"
+
+- name: Start container
+  docker_compose:
+    project_src: "{{ created_user.home }}/factorio"
+    state: present
+
