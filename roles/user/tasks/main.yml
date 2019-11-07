@@ -1,14 +1,16 @@
 ---
 - name: Create user
   user:
-    name: "{{username}}"
+    name: "{{ username }}"
     groups:
       - sudo
+    append: True
     shell: /bin/bash
+  register: created_user
 
 - name: Set authorized key from file
   authorized_key:
-    user: "{{username}}"
+    user: "{{ username }}"
     key: "{{ lookup('file', '/home/' + username + '/.ssh/id_ecdsa.pub') }}"
 
 - name: Disable requirement of sudo password
