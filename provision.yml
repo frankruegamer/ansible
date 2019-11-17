@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  roles:
+    - provision
+
+- hosts: factorio
+  gather_facts: no
+  remote_user: root
+  tasks:
+    - wait_for_connection:
+        timeout: 30
+    - include_role:
+        name: user
