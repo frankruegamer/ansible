@@ -1,4 +1,6 @@
 ---
 dependencies:
-  - dev-sec.ssh-hardening
-  - dev-sec.os-hardening
+  - role: dev-sec.ssh-hardening
+    become: True
+  - role: dev-sec.os-hardening
+    become: True
