@@ -1,10 +1,10 @@
 ---
 - hosts: factorio
+  become: True
   roles:
-    - role: user
-      become: True
+    - user
     - security
-    - role: docker
-      become: True
-    - factorio
+    - docker
+    - role: factorio
+      become: False
 
