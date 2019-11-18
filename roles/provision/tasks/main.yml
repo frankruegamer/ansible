@@ -9,5 +9,6 @@
     firewall_group: Factorio
     ssh_keys:
       - frank@archlinux
+      - frank@carbon
 
 - meta: refresh_inventory
