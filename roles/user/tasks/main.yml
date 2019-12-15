@@ -10,7 +10,6 @@
 
 - name: Get Vultr SSH keys infos
   vultr_ssh_key_info:
-    api_key: "{{ lookup('env', 'VULTR_API_KEY') }}"
   register: vultr_ssh_keys
 
 - name: Set authorized keys from Vultr

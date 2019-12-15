@@ -1,6 +1,8 @@
 ---
 - hosts: factorio
   become: True
+  environment:
+    VULTR_API_KEY: "{{ vultr_api_key }}"
   roles:
     - user
     - security
