@@ -1,22 +1,30 @@
 ---
+- name: Create factorio user
+  become: True
+  user:
+    name: "{{ factorio_user }}"
+    group: "{{ factorio_group }}"
+    system: True
+    uid: 845
+
 - name: Create Factorio directories
+  become: True
   file:
     path: "{{ item }}"
     state: directory
-    owner: '845'
-    group: '845'
+    owner: "{{ factorio_user }}"
+    group: "{{ factorio_group }}"
   loop:
     - /opt/factorio
     - /opt/factorio/mods
-  become: True
 
 - name: Setup mods
+  become: True
   template:
     src: mod-list.json.j2
     dest: /opt/factorio/mods/mod-list.json
-    owner: '845'
-    group: '845'
-  become: True
+    owner: "{{ factorio_user }}"
+    group: "{{ factorio_group }}"
 
 - name: Create docker-compose directory
   file:
