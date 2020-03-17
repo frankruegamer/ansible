@@ -4,8 +4,11 @@
   user:
     name: "{{ factorio_user }}"
     group: "{{ factorio_group }}"
+    groups: docker
     system: True
     uid: 845
+    shell: /bin/bash
+  register: created_factorio_user
 
 - name: Create Factorio directories
   become: True
@@ -26,18 +29,16 @@
     owner: "{{ factorio_user }}"
     group: "{{ factorio_group }}"
 
-- name: Create docker-compose directory
-  file:
-    path: "{{ created_user.home }}/factorio"
-    state: directory
-
 - name: Setup docker-compose.yml
+  become: True
+  become_user: "{{ factorio_user }}"
   template:
     src: docker-compose.yml.j2
-    dest: "{{ created_user.home }}/factorio/docker-compose.yml"
+    dest: "{{ created_factorio_user.home }}/docker-compose.yml"
 
 - name: Start container
+  become: True
+  become_user: "{{ factorio_user }}"
   docker_compose:
-    project_src: "{{ created_user.home }}/factorio"
+    project_src: "{{ created_factorio_user.home }}"
     state: present
-
