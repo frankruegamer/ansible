@@ -1,0 +1,12 @@
+[Unit]
+Description=Update Factorio
+
+[Service]
+Type=oneshot
+WorkingDirectory={{ created_factorio_user.home }}
+User={{ factorio_user }}
+ExecStart=docker-compose pull
+ExecStart=docker-compose up -d
+
+[Install]
+WantedBy=multi-user.target

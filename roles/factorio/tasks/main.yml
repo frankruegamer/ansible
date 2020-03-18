@@ -42,3 +42,22 @@
   docker_compose:
     project_src: "{{ created_factorio_user.home }}"
     state: present
+
+- name: Setup factorio update service
+  become: True
+  template:
+    src: update-factorio.service.j2
+    dest: /etc/systemd/system/update-factorio.service
+
+- name: Setup factorio update timer
+  become: True
+  template:
+    src: update-factorio.timer.j2
+    dest: /etc/systemd/system/update-factorio.timer
+
+- name: Enable and start timer
+  become: True
+  service:
+    name: update-factorio.timer
+    state: restarted
+    enabled: True
