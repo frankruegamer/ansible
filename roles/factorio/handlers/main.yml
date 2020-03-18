@@ -1,0 +1,6 @@
+---
+- name: Restart update timer
+  service:
+    name: update-factorio.timer
+    state: restarted
+    daemon_reload: True
