@@ -1,2 +1,5 @@
 ---
 username: "{{ lookup('env', 'USER') }}"
+authorized_keys:
+  - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKfjNOr7MUSA/RCwlES34omSdzkTHGiUKmUTOeDAIZ+5 frank@archlinux'
+  - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG9jFWRUplmGwClRGEAFbMcgf9cv/0LIkM2V/5PJ/EWW frank@carbon'

@@ -8,20 +8,12 @@
     shell: /bin/bash
   register: created_user
 
-- name: Get Vultr SSH keys infos
-  vultr_ssh_key_info:
-  register: vultr_ssh_keys
-
-- name: Set authorized keys from Vultr
+- name: Set authorized keys
   authorized_key:
     user: "{{ username }}"
     state: present
-    key: "{{ vultr_ssh_keys.vultr_ssh_key_info | selectattr('name', 'in', ssh_keys) | map(attribute='ssh_key') | join('\n') }}"
+    key: "{{ authorized_keys | join('\n') }}"
     exclusive: True
-  vars:
-    ssh_keys:
-      - frank@archlinux
-      - frank@carbon
 
 - name: Disable requirement of sudo password
   lineinfile:
