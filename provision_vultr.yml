@@ -1,7 +1,7 @@
 ---
 - hosts: localhost
   roles:
-    - provision
+    - provision_vultr
 
 - hosts: factorio
   gather_facts: no
