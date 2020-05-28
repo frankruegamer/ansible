@@ -9,3 +9,4 @@ factorio_mods:
 security_ufw_open_ports:
   - port: 34197
     protocol: udp
+os_ignore_users: factorio
