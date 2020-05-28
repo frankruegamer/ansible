@@ -1,5 +1,6 @@
 ---
 - name: Restart update timer
+  become: True
   service:
     name: update-factorio.timer
     state: restarted
