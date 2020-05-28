@@ -10,7 +10,13 @@
     enabled: True
 
 - name: Import SSH hardening
-  include_role: dev-sec.ssh-hardening
+  include_role:
+    name: dev-sec.ssh-hardening
 
 - name: Import OS hardening
-  include_role: dev-sec.os-hardening
+  include_role:
+    name: dev-sec.os-hardening
+  vars:
+    sysctl_overwrite:
+      # Enable IPv4 traffic forwarding.
+      net.ipv4.ip_forward: 1
