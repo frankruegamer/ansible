@@ -1,8 +1,4 @@
 ---
-- hosts: localhost
-  roles:
-    - provision_vultr
-
 - hosts: factorio
   gather_facts: no
   remote_user: root
