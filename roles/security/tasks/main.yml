@@ -9,3 +9,8 @@
     state: started
     enabled: True
 
+- name: Import SSH hardening
+  include_role: dev-sec.ssh-hardening
+
+- name: Import OS hardening
+  include_role: dev-sec.os-hardening
