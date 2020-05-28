@@ -9,6 +9,13 @@
     state: started
     enabled: True
 
+- name: Open ufw ports
+  ufw:
+    rule: allow
+    port: "{{ item.port | default(item) }}"
+    protocol: "{{ item.protocol | default('tcp') }}"
+  loop: "{{ security_ufw_open_ports }}"
+
 - name: Import SSH hardening
   include_role:
     name: dev-sec.ssh-hardening

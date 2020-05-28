@@ -6,3 +6,6 @@ factorio_mods:
   - Fill4Me
   - Squeak Through
   - VehicleSnap
+security_ufw_open_ports:
+  - port: 34197
+    protocol: udp
