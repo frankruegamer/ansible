@@ -3,8 +3,8 @@
   become: True
   user:
     name: "{{ factorio_user }}"
-    group: "{{ factorio_group }}"
-    groups: docker
+    groups:
+      - docker
     system: True
     uid: 845
     shell: /bin/bash
